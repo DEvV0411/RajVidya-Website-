@@ -105,7 +105,7 @@ nav {
   transition: box-shadow 0.3s, padding 0.2s;
 }
 nav.scrolled {
-  box-shadow: 0 4px 40px rgba(62, 205, 184, 0.14);
+  box-shadow: 0 4px 40px rgba(0, 200, 180, 0.12);
   padding: 12px 5%;
 }
 .nav.scrolled .nav-logo img { height: 32px; }
@@ -124,7 +124,6 @@ nav.scrolled {
   background: var(--teal); color: var(--dark); border: none; cursor: pointer;
   padding: 10px 22px; border-radius: 50px; font-size: 14px; font-family: var(--font-body);
   font-weight: 600; transition: background 0.2s, transform 0.15s;
-  animation: ctaGlow 2.6s infinite;
 }
 .nav-cta:hover { background: var(--teal-bright); transform: translateY(-1px); }
 .nav-toggle {
@@ -163,9 +162,7 @@ nav.scrolled {
 .hero {
   position: relative; min-height: 100vh; display: flex; align-items: center;
   overflow: hidden;
-  background: radial-gradient(1200px 600px at 20% 20%, rgba(62, 205, 184, 0.15), transparent 60%),
-    radial-gradient(900px 520px at 90% 40%, rgba(155, 89, 255, 0.10), transparent 55%),
-    #03080f;
+  background: #03080f;
 }
 
 .hero::before{
@@ -234,18 +231,7 @@ nav.scrolled {
   font-family: var(--font-display); font-size: clamp(40px, 6vw, 72px);
   font-weight: 600; line-height: 1.1; color: #fff; margin-bottom: 20px;
 }
-.hero-title em {
-  font-style: italic;
-  background: linear-gradient(to right, var(--teal-bright), var(--purple), var(--teal-bright));
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shine 4s linear infinite;
-}
-
-@keyframes shine {
-  to { background-position: 200% center; }
-}
+.hero-title em { color: var(--teal); font-style: italic; }
 .hero-sub {
   font-size: 18px; color: rgba(255, 255, 255, 0.72); line-height: 1.7;
   max-width: 480px; margin-bottom: 36px;
@@ -268,7 +254,6 @@ nav.scrolled {
   font-weight: 600; text-decoration: none; display: inline-block;
   transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
   box-shadow: 0 8px 24px rgba(62, 205, 184, 0.35);
-  animation: ctaGlow 2.6s infinite;
 }
 .btn-primary:hover { background: var(--teal-bright); transform: translateY(-2px); }
 
@@ -369,7 +354,7 @@ section { padding: 96px 5%; }
   display: flex; flex-direction: column; align-items: center; padding: 32px 24px; text-align: center;
 }
 .faculty-back {
-  background: linear-gradient(135deg, var(--teal-dark), var(--purple));
+  background: linear-gradient(135deg, var(--teal-dark), #1a9e8c);
   transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; padding: 32px 28px;
 }
 .faculty-avatar {
@@ -444,7 +429,7 @@ section { padding: 96px 5%; }
 .plan-features li { font-size: 14px; color: rgba(212, 237, 233, 0.75); display: flex; align-items: center; gap: 8px; }
 .plan-features li::before { content: 'âœ“'; color: var(--teal); font-weight: 600; width: 16px; }
 .pay-btn { width: 100%; padding: 14px; border-radius: 50px; font-size: 15px; font-family: var(--font-body); font-weight: 500; cursor: pointer; transition: all 0.2s; border: none; }
-.pay-btn-primary { background: var(--teal); color: #03080f; box-shadow: 0 6px 20px rgba(62, 205, 184, 0.35); font-weight: 600; animation: ctaGlow 2.6s infinite; }
+.pay-btn-primary { background: var(--teal); color: #03080f; box-shadow: 0 6px 20px rgba(62, 205, 184, 0.35); font-weight: 600; }
 .pay-btn-primary:hover { background: var(--teal-bright); transform: translateY(-1px); }
 .pay-btn-outline { background: transparent; color: var(--text); border: 1.5px solid rgba(62, 205, 184, 0.3); }
 .pay-btn-outline:hover { border-color: var(--teal); color: var(--teal); }
@@ -501,7 +486,6 @@ section { padding: 96px 5%; }
   background: var(--teal); color: #03080f; border: none; cursor: pointer;
   padding: 14px; border-radius: 50px; font-size: 15px; font-family: var(--font-body);
   font-weight: 600; transition: background 0.2s, transform 0.15s;
-  animation: ctaGlow 2.6s infinite;
 }
 .form-submit:hover { background: var(--teal-bright); transform: translateY(-1px); }
 
@@ -554,7 +538,7 @@ footer {
 .modal-input::placeholder { color: rgba(255,255,255,0.35); }
 .modal-input:focus { border-color: var(--teal); }
 .modal-actions { display: flex; gap: 10px; margin-top: 8px; }
-.modal-pay-btn { flex: 1; background: var(--teal); color: #03080f; border: none; cursor: pointer; padding: 13px; border-radius: 50px; font-size: 15px; font-family: var(--font-body); font-weight: 600; transition: background 0.2s; animation: ctaGlow 2.6s infinite; }
+.modal-pay-btn { flex: 1; background: var(--teal); color: #03080f; border: none; cursor: pointer; padding: 13px; border-radius: 50px; font-size: 15px; font-family: var(--font-body); font-weight: 600; transition: background 0.2s; }
 .modal-pay-btn:hover { background: var(--teal-bright); }
 .modal-cancel-btn { background: transparent; border: 1.5px solid rgba(255, 255, 255, 0.15); color: rgba(212, 237, 233, 0.6); cursor: pointer; padding: 13px 24px; border-radius: 50px; font-size: 15px; font-family: var(--font-body); transition: border-color 0.2s; }
 .modal-cancel-btn:hover { border-color: rgba(255,255,255,0.4); }
