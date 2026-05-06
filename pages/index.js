@@ -1,15 +1,15 @@
-import Head from 'next/head'
+﻿import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
-/* ── DATA ── */
+/* â”€â”€ DATA â”€â”€ */
 const FACULTY = [
   {
     initials: 'HD', name: 'Harshit Desai', subject: 'Mathematics',
-    cred: 'B.E., MBA • Math & SAT Expert', exp: '15+ years in International curriculum',
+    cred: 'B.E., MBA â€¢ Math & SAT Expert', exp: '15+ years in International curriculum',
     quote: '"Mostly humorous, passionate about numbers and food alike."',
     courses: ['IBDP Math AA/AI', 'A Levels', 'SAT Math'],
-    bio: 'Known for making the most challenging topics feel engaging. His patience knows no bounds — always willing to explain in different ways until the concept clicks.',
+    bio: 'Known for making the most challenging topics feel engaging. His patience knows no bounds â€” always willing to explain in different ways until the concept clicks.',
   },
   {
     initials: 'ZS', name: 'Zil Sheth', subject: 'Economics & Business Studies',
@@ -20,34 +20,34 @@ const FACULTY = [
   },
   {
     initials: 'PS', name: 'Pradeep Singh', subject: 'Physics',
-    cred: 'B.Tech, IIT • Physics Expert', exp: '9+ years in International curriculum',
+    cred: 'B.Tech, IIT â€¢ Physics Expert', exp: '9+ years in International curriculum',
     quote: '"Science Experiments and Robotics enthusiast"',
     courses: ['IBDP Physics', 'A Levels', 'IIT JEE / NEET', 'Olympiads'],
-    bio: 'Balances concept clarity with past paper practice. Extra sessions before exams — encourages every question, never lets a student feel their doubt is too basic.',
+    bio: 'Balances concept clarity with past paper practice. Extra sessions before exams â€” encourages every question, never lets a student feel their doubt is too basic.',
   },
   {
     initials: 'YH', name: 'Dr. Yash Hemani', subject: 'Sciences & Math',
     cred: 'PhD Biosciences, Univ. of Birmingham, UK', exp: '15+ years in International curriculum',
     quote: '"Singer, pianist, and culinary enthusiast"',
     courses: ['IGCSE Sciences', 'IGCSE Math', 'IBDP Chemistry', 'IBDP Biology'],
-    bio: 'Transforms "I have to study" into "I get to learn." Encourages experiential learning over rote memorisation — his students consistently achieve 8 A*s at IGCSE.',
+    bio: 'Transforms "I have to study" into "I get to learn." Encourages experiential learning over rote memorisation â€” his students consistently achieve 8 A*s at IGCSE.',
   },
 ]
 
 const COURSES = [
-  { icon: '∑', name: 'Mathematics', boards: 'IBDP AA/AI HL&SL • A Levels • SAT', desc: 'Pure math, statistics, calculus and SAT prep taught by a B.E., MBA math specialist.' },
-  { icon: '⚛', name: 'Physics', boards: 'IBDP • A Levels • IIT JEE • NEET • Olympiads', desc: 'Mechanics to quantum — with an IIT graduate who makes every session engaging.' },
-  { icon: '🧬', name: 'Chemistry & Biology', boards: 'IGCSE • IBDP HL&SL', desc: 'Taught by a PhD from the University of Birmingham. Experiential learning over memorisation.' },
-  { icon: '📈', name: 'Economics', boards: 'IGCSE • IBDP HL&SL • A Levels', desc: 'Real-world case studies, board exam strategy, and IA mentoring by an IFOA-qualified actuary.' },
-  { icon: '💼', name: 'Business Studies', boards: 'IGCSE • IBDP • A Levels', desc: 'Concept-driven business understanding with structured response training and feedback cycles.' },
-  { icon: '📝', name: 'SAT Prep', boards: 'Math • Evidence-Based Reading', desc: 'Targeted SAT preparation with practice tests, score analysis, and section-specific strategies.' },
+  { icon: 'âˆ‘', name: 'Mathematics', boards: 'IBDP AA/AI HL&SL â€¢ A Levels â€¢ SAT', desc: 'Pure math, statistics, calculus and SAT prep taught by a B.E., MBA math specialist.' },
+  { icon: 'âš›', name: 'Physics', boards: 'IBDP â€¢ A Levels â€¢ IIT JEE â€¢ NEET â€¢ Olympiads', desc: 'Mechanics to quantum â€” with an IIT graduate who makes every session engaging.' },
+  { icon: 'ðŸ§¬', name: 'Chemistry & Biology', boards: 'IGCSE â€¢ IBDP HL&SL', desc: 'Taught by a PhD from the University of Birmingham. Experiential learning over memorisation.' },
+  { icon: 'ðŸ“ˆ', name: 'Economics', boards: 'IGCSE â€¢ IBDP HL&SL â€¢ A Levels', desc: 'Real-world case studies, board exam strategy, and IA mentoring by an IFOA-qualified actuary.' },
+  { icon: 'ðŸ’¼', name: 'Business Studies', boards: 'IGCSE â€¢ IBDP â€¢ A Levels', desc: 'Concept-driven business understanding with structured response training and feedback cycles.' },
+  { icon: 'ðŸ“', name: 'SAT Prep', boards: 'Math â€¢ Evidence-Based Reading', desc: 'Targeted SAT preparation with practice tests, score analysis, and section-specific strategies.' },
 ]
 
 const TESTIMONIALS = [
-  { initials: 'SI', name: 'Sushmita Iyer', score: '7/7', info: 'IBDP Math AAHL • Hill Spring International', text: "Each class with Harshit sir has been an unforgettable experience, brimming with energy and fun. His patience knows no bounds — he's always willing to explain in different ways until I grasp it fully." },
-  { initials: 'KD', name: 'Krishna Damania', score: '7/7', info: 'IBDP Economics • Hill Spring International', text: "In Zil Ma'am's Economics lessons, in-depth discussions helped me grasp the subject much more effectively. She guided us closely through Internal Assessments with valuable insights that helped refine our work." },
-  { initials: 'SI2', name: 'Soumil Iyer', score: '7/7', info: 'IBDP Physics HL • Garodia International', text: "Pradeep Sir's lessons sparked my interest in physics and greatly improved my ability to solve IB questions. Every class was engaging — never boring — and I'm much more confident in physics now." },
-  { initials: 'NV', name: 'Nishka Vaghela', score: '8 A*', info: 'IGCSE Grade 10 • Hiranandani Foundation', text: 'Ever since I started Dr. Yash Hemani Sir\'s classes, my approach to learning changed — from "I have to study" to "I get to learn." His passion made every class fly by. I achieved 8 A*s in my IGCSE subjects.' },
+  { initials: 'SI', name: 'Sushmita Iyer', score: '7/7', info: 'IBDP Math AAHL â€¢ Hill Spring International', text: "Each class with Harshit sir has been an unforgettable experience, brimming with energy and fun. His patience knows no bounds â€” he's always willing to explain in different ways until I grasp it fully." },
+  { initials: 'KD', name: 'Krishna Damania', score: '7/7', info: 'IBDP Economics â€¢ Hill Spring International', text: "In Zil Ma'am's Economics lessons, in-depth discussions helped me grasp the subject much more effectively. She guided us closely through Internal Assessments with valuable insights that helped refine our work." },
+  { initials: 'SI2', name: 'Soumil Iyer', score: '7/7', info: 'IBDP Physics HL â€¢ Garodia International', text: "Pradeep Sir's lessons sparked my interest in physics and greatly improved my ability to solve IB questions. Every class was engaging â€” never boring â€” and I'm much more confident in physics now." },
+  { initials: 'NV', name: 'Nishka Vaghela', score: '8 A*', info: 'IGCSE Grade 10 â€¢ Hiranandani Foundation', text: 'Ever since I started Dr. Yash Hemani Sir\'s classes, my approach to learning changed â€” from "I have to study" to "I get to learn." His passion made every class fly by. I achieved 8 A*s in my IGCSE subjects.' },
 ]
 
 const PLANS = [
@@ -58,20 +58,20 @@ const PLANS = [
     amount: 0,
   },
   {
-    name: 'Monthly', price: '₹8,000', per: '/ month', featured: true,
+    name: 'Monthly', price: 'â‚¹8,000', per: '/ month', featured: true,
     desc: 'Consistent weekly sessions with a dedicated mentor.',
     features: ['8 sessions per month', '1 subject of your choice', 'Study material included', 'WhatsApp doubt clearing', 'Extra pre-exam sessions'],
     amount: 800000,
   },
   {
-    name: 'Intensive', price: '₹22,000', per: '/ 3 months', featured: false,
+    name: 'Intensive', price: 'â‚¹22,000', per: '/ 3 months', featured: false,
     desc: 'Full exam prep package for boards and university entry.',
     features: ['24+ sessions', 'Up to 2 subjects', 'Past paper practice', 'Pre-exam intensive sessions', 'Progress reports to parents', 'Priority scheduling'],
     amount: 2200000,
   },
 ]
 
-/* ── AURORA MOUSE EFFECT ── */
+/* â”€â”€ AURORA MOUSE EFFECT â”€â”€ */
 function AuroraMouseEffect() {
   const canvasRef = useRef(null)
 
@@ -92,7 +92,7 @@ function AuroraMouseEffect() {
       x: Math.random(),
       y: Math.random(),
       r: 120 + Math.random() * 160,
-      hue: [220, 200, 240, 260, 180, 210][i],
+      hue: [170, 165, 180, 175, 168, 172][i],
       speed: 0.0003 + Math.random() * 0.0004,
       offset: Math.random() * Math.PI * 2,
     }))
@@ -156,7 +156,7 @@ function AuroraMouseEffect() {
       trail.forEach((p, i) => {
         const progress = i / trail.length
         const r = 90 * progress * blobScale
-        const hue = 215 + Math.sin(t * 2 + i * 0.3) * 30
+        const hue = 170 + Math.sin(t * 2 + i * 0.3) * 14
         const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r)
         g.addColorStop(0, `hsla(${hue},90%,65%,${progress * 0.18})`)
         g.addColorStop(1, 'transparent')
@@ -166,18 +166,18 @@ function AuroraMouseEffect() {
 
       // 4. Main glowing blob
       const mainR = 140 * blobScale
-      const h1 = 220 + Math.sin(t * 1.3) * 25
-      const h2 = 250 + Math.cos(t * 0.9) * 30
+      const h1 = 172 + Math.sin(t * 1.3) * 10
+      const h2 = 182 + Math.cos(t * 0.9) * 12
       const mg = ctx.createRadialGradient(blobX, blobY, 0, blobX, blobY, mainR)
-      mg.addColorStop(0, `hsla(${h1},90%,68%,0.45)`)
-      mg.addColorStop(0.4, `hsla(${h2},80%,58%,0.22)`)
+      mg.addColorStop(0, `hsla(${h1},80%,62%,0.45)`)
+      mg.addColorStop(0.4, `hsla(${h2},75%,55%,0.22)`)
       mg.addColorStop(1, 'transparent')
       ctx.beginPath(); ctx.arc(blobX, blobY, mainR, 0, Math.PI * 2)
       ctx.fillStyle = mg; ctx.fill()
 
       // 5. Bright core
       const cg = ctx.createRadialGradient(blobX, blobY, 0, blobX, blobY, 12 * blobScale)
-      cg.addColorStop(0, 'rgba(180,215,255,0.9)')
+      cg.addColorStop(0, 'rgba(62,205,184,0.9)')
       cg.addColorStop(1, 'transparent')
       ctx.beginPath(); ctx.arc(blobX, blobY, 12 * blobScale, 0, Math.PI * 2)
       ctx.fillStyle = cg; ctx.fill()
@@ -195,7 +195,7 @@ function AuroraMouseEffect() {
       stars.forEach(s => {
         const alpha = s.a * (0.6 + 0.4 * Math.sin(t * s.speed + s.flicker))
         ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(180,210,255,${alpha})`; ctx.fill()
+        ctx.fillStyle = `rgba(62,205,184,${alpha})`; ctx.fill()
       })
     }
     draw()
@@ -214,7 +214,7 @@ function AuroraMouseEffect() {
 }
 
 
-/* ── SCROLL REVEAL HOOK ── */
+/* â”€â”€ SCROLL REVEAL HOOK â”€â”€ */
 function useReveal() {
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -227,7 +227,7 @@ function useReveal() {
 }
 
 
-/* ── PAYMENT MODAL ── */
+/* â”€â”€ PAYMENT MODAL â”€â”€ */
 function PaymentModal({ plan, onClose }) {
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '' })
 
@@ -245,17 +245,17 @@ function PaymentModal({ plan, onClose }) {
     }
     try {
       const rzp = new window.Razorpay({
-        key: 'YOUR_RAZORPAY_KEY_ID', // ← Replace with your Razorpay key
+        key: 'YOUR_RAZORPAY_KEY_ID', // â† Replace with your Razorpay key
         amount: plan.amount,
         currency: 'INR',
         name: 'Raj Vidya Higher Studies',
-        description: `${plan.name} Plan — ${form.subject}`,
+        description: `${plan.name} Plan â€” ${form.subject}`,
         prefill: { name: form.name, email: form.email, contact: form.phone },
         notes: { subject: form.subject, plan: plan.name },
         theme: { color: '#2563EB' },
         handler(response) {
           onClose()
-          alert(`🎉 Payment successful!\nPayment ID: ${response.razorpay_payment_id}\n\nWelcome to Raj Vidya, ${form.name}!`)
+          alert(`ðŸŽ‰ Payment successful!\nPayment ID: ${response.razorpay_payment_id}\n\nWelcome to Raj Vidya, ${form.name}!`)
         },
       })
       rzp.open()
@@ -269,7 +269,7 @@ function PaymentModal({ plan, onClose }) {
       <div className="modal">
         <div className="modal-title">Complete Enrollment</div>
         <div className="modal-sub">Fill in your details to proceed.</div>
-        <div className="modal-plan-badge">{plan.name} — {plan.price}</div>
+        <div className="modal-plan-badge">{plan.name} â€” {plan.price}</div>
         <div className="modal-form">
           {[
             { key: 'name', placeholder: 'Full Name *', type: 'text' },
@@ -289,15 +289,15 @@ function PaymentModal({ plan, onClose }) {
         </div>
         <div className="modal-actions">
           <button className="modal-cancel-btn" onClick={onClose}>Cancel</button>
-          <button className="modal-pay-btn" onClick={handlePay}>Pay Securely →</button>
+          <button className="modal-pay-btn" onClick={handlePay}>Pay Securely â†’</button>
         </div>
-        <div className="razorpay-note">Secured by <span>Razorpay</span> · UPI, Cards, Net Banking</div>
+        <div className="razorpay-note">Secured by <span>Razorpay</span> Â· UPI, Cards, Net Banking</div>
       </div>
     </div>
   )
 }
 
-/* ── MAIN PAGE ── */
+/* â”€â”€ MAIN PAGE â”€â”€ */
 export default function Home() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -333,13 +333,13 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Raj Vidya Higher Studies – International Curriculum Experts</title>
+        <title>Raj Vidya Higher Studies â€“ International Curriculum Experts</title>
         <meta name="description" content="Expert mentoring in IBDP, IGCSE, A Levels & SAT. Mumbai's top international curriculum specialists." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo.png" />
       </Head>
 
-      {/* ── NAV ── */}
+      {/* â”€â”€ NAV â”€â”€ */}
       <nav className={scrolled ? 'scrolled' : ''}>
         <div className="page-width" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
           <a href="#" className="nav-logo" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); setMenuOpen(false) }}>
@@ -363,21 +363,21 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* ── HERO ── */}
+      {/* â”€â”€ HERO â”€â”€ */}
       <section className="hero" id="home">
         <AuroraMouseEffect />
         <div className="hero-inner page-width">
           <div className="hero-content">
-            <div className="hero-badge">🎓 International Curriculum Experts</div>
+            <div className="hero-badge">ðŸŽ“ International Curriculum Experts</div>
             <h1 className="hero-title">
               A good teacher changes <em>everything.</em>
             </h1>
             <p className="hero-sub">
-              Expert mentoring in IBDP, IGCSE, A Levels &amp; SAT. Simplifying the world&apos;s toughest curricula — one student at a time.
+              Expert mentoring in IBDP, IGCSE, A Levels &amp; SAT. Simplifying the world&apos;s toughest curricula â€” one student at a time.
             </p>
           <div className="hero-actions">
             <button className="btn-primary reveal reveal-delay-1" onClick={() => scrollTo('pricing')}>Enroll Now</button>
-            <button className="btn-secondary reveal reveal-delay-2" onClick={() => scrollTo('faculty')}>Meet Our Faculty →</button>
+            <button className="btn-secondary reveal reveal-delay-2" onClick={() => scrollTo('faculty')}>Meet Our Faculty â†’</button>
           </div>
           </div>
           <div className="hero-stats">
@@ -391,20 +391,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── ABOUT ── */}
+      {/* â”€â”€ ABOUT â”€â”€ */}
       <section id="about" className="about-section">
         <div className="page-width">
           <div className="reveal">
             <p className="section-label">Who We Are</p>
             <h2 className="section-title">Where international students find their edge.</h2>
-            <p className="section-sub">Located in the heart of Mumbai, Raj Vidya Higher Studies is home to a handpicked team of subject specialists — each with deep experience in the international curriculum.</p>
+            <p className="section-sub">Located in the heart of Mumbai, Raj Vidya Higher Studies is home to a handpicked team of subject specialists â€” each with deep experience in the international curriculum.</p>
           </div>
           <div className="about-grid">
             <div className="about-visual reveal reveal-delay-1">
               {[
-                { icon: '📐', title: 'Math & Sciences', text: 'IBDP, IGCSE, A Levels, IIT JEE, NEET, SAT coverage' },
-                { icon: '📊', title: 'Economics & Business', text: 'Case-based learning with board exam-focused practice' },
-                { icon: '🏆', title: 'Consistent 7/7 Results', text: 'Students consistently achieve top scores across subjects' },
+                { icon: 'ðŸ“', title: 'Math & Sciences', text: 'IBDP, IGCSE, A Levels, IIT JEE, NEET, SAT coverage' },
+                { icon: 'ðŸ“Š', title: 'Economics & Business', text: 'Case-based learning with board exam-focused practice' },
+                { icon: 'ðŸ†', title: 'Consistent 7/7 Results', text: 'Students consistently achieve top scores across subjects' },
               ].map((c, i) => (
                 <div key={i} className="about-card-3d">
                   <div className="about-card-icon">{c.icon}</div>
@@ -419,7 +419,7 @@ export default function Home() {
                 Concept clarity before exam strategy.
               </h3>
               <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.68)', lineHeight: 1.75, marginBottom: 8 }}>
-                We believe that deep understanding beats rote learning every time. Our faculty don&apos;t just teach — they mentor, adapt, and inspire.
+                We believe that deep understanding beats rote learning every time. Our faculty don&apos;t just teach â€” they mentor, adapt, and inspire.
               </p>
               <ul className="about-list">
                 {[
@@ -430,7 +430,7 @@ export default function Home() {
               </ul>
               <div style={{ marginTop: 28 }}>
                 <a href="tel:+919867234400" style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 14, color: '#2563EB', fontWeight: 500, textDecoration: 'none' }}>
-                  📞 +91 98672 34400
+                  ðŸ“ž +91 98672 34400
                 </a>
               </div>
               <div className="motto-box">
@@ -442,7 +442,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FACULTY ── */}
+      {/* â”€â”€ FACULTY â”€â”€ */}
       <section id="faculty" className="faculty-section">
         <div className="page-width">
           <div className="reveal">
@@ -460,7 +460,7 @@ export default function Home() {
                     <div className="faculty-subject">{f.subject}</div>
                     <div className="faculty-cred">{f.cred}</div>
                     <div className="faculty-exp">{f.exp}</div>
-                    <div className="faculty-flip-hint">Hover to learn more ↻</div>
+                    <div className="faculty-flip-hint">Hover to learn more â†»</div>
                   </div>
                   <div className="faculty-back">
                     <div className="faculty-back-name">{f.name}</div>
@@ -478,13 +478,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── COURSES ── */}
+      {/* â”€â”€ COURSES â”€â”€ */}
       <section id="courses" className="courses-section">
         <div className="page-width">
           <div className="reveal">
             <p className="section-label">What We Teach</p>
             <h2 className="section-title">Every subject. Every board. Simplified.</h2>
-            <p className="section-sub">From foundation level to advanced higher studies — our curriculum coverage is comprehensive.</p>
+            <p className="section-sub">From foundation level to advanced higher studies â€” our curriculum coverage is comprehensive.</p>
           </div>
           <div className="courses-grid">
             {COURSES.map((c, i) => (
@@ -499,7 +499,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PRICING ── */}
+      {/* â”€â”€ PRICING â”€â”€ */}
       <section id="pricing" className="pricing-section">
         <div className="page-width">
           <div className="reveal">
@@ -526,13 +526,13 @@ export default function Home() {
             ))}
           </div>
           <p style={{ fontSize: 13, color: 'rgba(212,237,233,0.45)', marginTop: 24, textAlign: 'center' }}>
-            📍 Powai & Grant Road, Mumbai &nbsp;|&nbsp; 📞{' '}
+            ðŸ“ Powai & Grant Road, Mumbai &nbsp;|&nbsp; ðŸ“ž{' '}
             <a href="tel:+919867234400" style={{ color: '#2563EB' }}>+91 98672 34400</a>
           </p>
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ── */}
+      {/* â”€â”€ TESTIMONIALS â”€â”€ */}
       <section id="testimonials" className="testimonials-section">
         <div className="page-width">
           <div className="reveal">
@@ -557,20 +557,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CONTACT ── */}
+      {/* â”€â”€ CONTACT â”€â”€ */}
       <section id="contact" className="contact-section">
         <div className="page-width">
           <div className="reveal">
             <p className="section-label">Get In Touch</p>
             <h2 className="section-title">Let&apos;s start your learning journey.</h2>
-            <p className="section-sub">Reach us directly or fill out the form — we&apos;ll get back to you within 24 hours.</p>
+            <p className="section-sub">Reach us directly or fill out the form â€” we&apos;ll get back to you within 24 hours.</p>
           </div>
           <div className="contact-grid">
             <div className="reveal reveal-delay-1">
               {[
-                { icon: '📞', label: 'Call / WhatsApp', value: <a href="tel:+919867234400">+91 98672 34400</a> },
-                { icon: '📍', label: 'Centre 1 — Powai', value: '161, Powai Plaza, Central Avenue, Hiranandani Gardens, Powai, Mumbai – 400076' },
-                { icon: '📍', label: 'Centre 2 — Grant Road', value: '107, Auto Commerce House, Grant Road (East), Mumbai – 400007' },
+                { icon: 'ðŸ“ž', label: 'Call / WhatsApp', value: <a href="tel:+919867234400">+91 98672 34400</a> },
+                { icon: 'ðŸ“', label: 'Centre 1 â€” Powai', value: '161, Powai Plaza, Central Avenue, Hiranandani Gardens, Powai, Mumbai â€“ 400076' },
+                { icon: 'ðŸ“', label: 'Centre 2 â€” Grant Road', value: '107, Auto Commerce House, Grant Road (East), Mumbai â€“ 400007' },
               ].map((c, i) => (
                 <div key={i} className="contact-item">
                   <div className="contact-icon">{c.icon}</div>
@@ -605,20 +605,21 @@ export default function Home() {
               </select>
               <textarea className="form-textarea form-input" placeholder="Any additional information..."
                 value={contactForm.msg} onChange={e => setContactForm(p => ({ ...p, msg: e.target.value }))} />
-              <button type="submit" className="form-submit">Send Message 📨</button>
+              <button type="submit" className="form-submit">Send Message ðŸ“¨</button>
             </form>
           </div>
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
+      {/* â”€â”€ FOOTER â”€â”€ */}
       <footer>
-        <span className="footer-copy">© 2025 Raj Vidya Higher Studies. Mumbai, India.</span>
+        <span className="footer-copy">Â© 2025 Raj Vidya Higher Studies. Mumbai, India.</span>
         <span className="footer-tagline">A good teacher changes everything.</span>
       </footer>
 
-      {/* ── PAYMENT MODAL ── */}
+      {/* â”€â”€ PAYMENT MODAL â”€â”€ */}
       <PaymentModal plan={activePlan} onClose={() => setActivePlan(null)} />
     </>
   )
 }
+
